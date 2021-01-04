@@ -3,35 +3,32 @@
 Personal administration utility for housekeeping github accounts. Use with care
 it deletes repos without warning.
 
+## Features
+
+- delete repos
+- transfer repos to owned organisation
+
 ## Installation
 
-Copy gdadm somewhere in your path.
+Copy gdadm somewhere in your path. Tested on Linux only
 
 ## Usage
 
 ```
 $ ghadm repo
-
-  repo tasks
-
-  Usage:
-
-    ghadm repo command arguments
-
-  Options:
-
-    --help                           Show this help.
-
-  Sub Commands:
-
+    list     list repositories
     web      open repository in web browser
     delete   delete repository
-    list     list repositories
+    trans    transfer repository
 ```
 
 ## Development
 
-TODO: Write development instructions here
+compile:
+
+```
+shard build
+```
 
 ## Contributing
 
