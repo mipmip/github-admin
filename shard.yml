@@ -1,0 +1,26 @@
+name: github-admin
+version: 0.1.0
+
+authors:
+  - Pim Snel <pim@lingewoud.nl>
+
+targets:
+  ghadm:
+    main: src/github-admin.cr
+
+crystal: 0.35.1
+
+license: MIT
+
+dependencies:
+  dotenv:
+    github: gdotdesign/cr-dotenv
+
+  octokit:
+    github: watzon/octokit.cr
+
+  clim:
+    github: at-grandpa/clim
+
+  tallboy:
+    github: epoch/tallboy
