@@ -49,6 +49,7 @@ module GithubAdmin
 
             github = Octokit.client(ENV["GH_USER"], ENV["GH_PAT"])
             repos = github.repositories(ENV["GH_USER"])
+            repos = github.repositories(ENV["GH_USER"])
             repos_all = repos.fetch_all
 
             header_cols = ["name", "stars", "fork"]
@@ -88,6 +89,19 @@ module GithubAdmin
               if github.delete_repository(ENV["GH_USER"]+"/"+ repo)
                 print "Deleted " + ENV["GH_USER"]+"/"+ repo + "\n"
               end
+            end
+          end
+        end
+
+        sub "trans" do
+          desc "transfer repository"
+          usage "ghadm repo trans [repo-name] [destination-organization]"
+          run do |opts, args|
+            repo = args.argv[0]
+            new_owner = args.argv[1]
+            github = Octokit.client(ENV["GH_USER"], ENV["GH_PAT"])
+            if github.transfer_repository(ENV["GH_USER"]+ "/" + repo, new_owner, [0])
+              print "Tranfered " + ENV["GH_USER"]+"/"+ repo + " to " + new_owner + "/" + repo + "\n"
             end
           end
         end
