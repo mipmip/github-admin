@@ -41,29 +41,6 @@ module GithubAdmin
           puts opts.help_string
         end
 
-        sub "web" do
-          desc "open repository in web browser"
-          usage "ghadm repo web [name]"
-          run do |opts, args|
-            args.argv.each do | repo |
-              Process.run("xdg-open",shell: true, args: {"https://github.com/"+ENV["GH_USER"]+"/"+repo})
-            end
-          end
-        end
-
-        sub "delete" do
-          desc "delete repository"
-          usage "ghadm repo delete [name]"
-          run do |opts, args|
-            args.argv.each do | repo |
-              github = Octokit.client(ENV["GH_USER"], ENV["GH_PAT"])
-              if github.delete_repository(ENV["GH_USER"]+"/"+ repo)
-                print "Deleted " + ENV["GH_USER"]+"/"+ repo + "\n"
-              end
-            end
-          end
-        end
-
         sub "list" do
           desc "list repositories"
           usage "ghadm repo list"
@@ -91,6 +68,30 @@ module GithubAdmin
 
           end
         end
+
+        sub "web" do
+          desc "open repository in web browser"
+          usage "ghadm repo web [name]"
+          run do |opts, args|
+            args.argv.each do | repo |
+              Process.run("xdg-open",shell: true, args: {"https://github.com/"+ENV["GH_USER"]+"/"+repo})
+            end
+          end
+        end
+
+        sub "delete" do
+          desc "delete repository"
+          usage "ghadm repo delete [name]"
+          run do |opts, args|
+            args.argv.each do | repo |
+              github = Octokit.client(ENV["GH_USER"], ENV["GH_PAT"])
+              if github.delete_repository(ENV["GH_USER"]+"/"+ repo)
+                print "Deleted " + ENV["GH_USER"]+"/"+ repo + "\n"
+              end
+            end
+          end
+        end
+
 
       end
 
