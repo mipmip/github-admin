@@ -19,7 +19,8 @@ $ ghadm repo
     list     list repositories
     web      open repository in web browser
     delete   delete repository
-    trans    transfer repository
+    trans    transfer repository to owned organization
+    rename   rename repository
 
 $ ghadm org
     list              List repositories
@@ -34,6 +35,8 @@ $ ghadm org
   * [x] delete
   * [x] transfer to organization
   * [x] rename
+  * [ ] update topics
+  * [ ] udpate description
 * Organization
   * [x] list
   * [x] list with repositories
