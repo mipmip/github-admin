@@ -5,8 +5,15 @@ it deletes repos without warning.
 
 ## Features
 
-- delete repos
-- transfer repos to owned organisation
+* Repository
+  * [x] list
+  * [x] show in web browser
+  * [x] delete
+  * [x] transfer to organization
+  * [x] rename
+* Organization
+  * [x] list
+  * [x] list with repositories
 
 ## Installation
 
@@ -27,19 +34,6 @@ $ ghadm org
     list-with-repos   List my organizations
 ```
 
-## Features
-
-* Repository
-  * [x] list
-  * [x] show in web browser
-  * [x] delete
-  * [x] transfer to organization
-  * [x] rename
-  * [ ] update topics
-  * [ ] udpate description
-* Organization
-  * [x] list
-  * [x] list with repositories
 
 ## Development
 
