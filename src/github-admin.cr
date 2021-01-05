@@ -48,8 +48,22 @@ module GithubAdmin
             print "My organizations\n"
 
             github = Octokit.client(ENV["GH_USER"], ENV["GH_PAT"])
-            #repos = github.repositories(ENV["GH_USER"])
-            orgs = github.get_organization("Lingewoud")
+            orgs = github.organizations_for_authenticated_user()
+
+            header_cols = ["login"]
+
+            table = Tallboy.table do
+              columns do
+                header_cols.each do | col |
+                  add col
+                end
+              end
+              header
+              orgs.fetch_all.each do | org|
+                row [org.login]
+              end
+            end
+            puts table.render
 
           end
         end
