@@ -18,7 +18,9 @@ dependencies:
 
   octokit:
     #github: watzon/octokit.cr
-    path: /home/pim/cForks/octokit.cr
+    github: mipmip/octokit.cr
+    branch: main-mipmip
+    #path: /home/pim/cForks/octokit.cr
 
   clim:
     github: at-grandpa/clim
