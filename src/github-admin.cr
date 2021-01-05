@@ -34,6 +34,27 @@ module GithubAdmin
         end
       end
 
+      sub "org" do
+        desc "Organization tasks"
+        usage "ghadm repo command arguments"
+        run do |opts, args|
+          puts opts.help_string
+        end
+
+        sub "list" do
+          desc "List my organizations"
+          usage "ghadm org list"
+          run do |opts, args|
+            print "My organizations\n"
+
+            github = Octokit.client(ENV["GH_USER"], ENV["GH_PAT"])
+            #repos = github.repositories(ENV["GH_USER"])
+            orgs = github.get_organization("Lingewoud")
+
+          end
+        end
+      end
+
       sub "repo" do
         desc "repo tasks"
         usage "ghadm repo command arguments"
@@ -42,13 +63,12 @@ module GithubAdmin
         end
 
         sub "list" do
-          desc "list repositories"
+          desc "list my repositories"
           usage "ghadm repo list"
           run do |opts, args|
             print "My repositories\n"
 
             github = Octokit.client(ENV["GH_USER"], ENV["GH_PAT"])
-            repos = github.repositories(ENV["GH_USER"])
             repos = github.repositories(ENV["GH_USER"])
             repos_all = repos.fetch_all
 

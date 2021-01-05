@@ -17,7 +17,8 @@ dependencies:
     github: gdotdesign/cr-dotenv
 
   octokit:
-    github: watzon/octokit.cr
+    #github: watzon/octokit.cr
+    path: /home/pim/cForks/octokit.cr
 
   clim:
     github: at-grandpa/clim

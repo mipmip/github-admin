@@ -13,7 +13,7 @@ shards:
     version: 0.10.7
 
   octokit:
-    git: https://github.com/watzon/octokit.cr.git
+    path: /home/pim/cForks/octokit.cr
     version: 0.1.0+git.commit.2de713de0ec27d2b9266cd9a6b99f2ffe4d6c076
 
   tallboy:
