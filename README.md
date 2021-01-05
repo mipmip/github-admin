@@ -22,7 +22,8 @@ $ ghadm repo
     trans    transfer repository
 
 $ ghadm org
-    list     list repositories
+    list              List repositories
+    list-with-repos   List my organizations
 ```
 
 ## Features
@@ -32,10 +33,10 @@ $ ghadm org
   * [x] show in web browser
   * [x] delete
   * [x] transfer to organization
-  * [ ] rename
+  * [x] rename
 * Organization
   * [x] list
-  * [ ] list with repositories
+  * [x] list with repositories
 
 ## Development
 

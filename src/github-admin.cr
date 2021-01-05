@@ -4,7 +4,7 @@ require "clim"
 require "tallboy"
 
 module GithubAdmin
-  VERSION = "0.1.1"
+  VERSION = "0.1.2"
 
   config_file = Path["~/.config/github-admin"].expand(home: true)
   begin
@@ -42,7 +42,7 @@ module GithubAdmin
         end
 
         sub "list" do
-          desc "List my organizations"
+          desc "list my organizations"
           usage "ghadm org list"
           run do |opts, args|
             print "My organizations\n"
@@ -67,6 +67,47 @@ module GithubAdmin
 
           end
         end
+
+        sub "list-with-repos" do
+          desc "list my organizations"
+          usage "ghadm org list"
+          run do |opts, args|
+
+            github = Octokit.client(ENV["GH_USER"], ENV["GH_PAT"])
+            orgs = github.organizations_for_authenticated_user()
+
+            orgs.fetch_all.each do | org|
+
+              repos = github.repositories(org.login)
+              page1repos = repos.fetch_page(1)
+              if page1repos.size > 0
+                repos_all = repos.fetch_all
+
+                header_cols = ["name", "stars", "fork"]
+
+                print org.login + " repositories\n"
+
+                table = Tallboy.table do
+                  columns do
+                    header_cols.each do | col |
+                      add col
+                    end
+                  end
+                  header
+                  repos_all.each do | repo|
+                    row [repo.name, repo.stargazers_count, (repo.fork ? "true" : "")]
+                  end
+                end
+                puts table.render
+              else
+                print org.login + " has zero repositories\n"
+              end
+
+            end
+
+
+          end
+        end
       end
 
       sub "repo" do
@@ -84,7 +125,6 @@ module GithubAdmin
 
             github = Octokit.client(ENV["GH_USER"], ENV["GH_PAT"])
             repos = github.repositories(ENV["GH_USER"])
-            repos_all = repos.fetch_all
 
             header_cols = ["name", "stars", "fork"]
 
@@ -110,6 +150,19 @@ module GithubAdmin
           run do |opts, args|
             args.argv.each do | repo |
               Process.run("xdg-open",shell: true, args: {"https://github.com/"+ENV["GH_USER"]+"/"+repo})
+            end
+          end
+        end
+
+        sub "rename" do
+          desc "rename repository"
+          usage "ghadm repo rename [current_name] [new_name]"
+          run do |opts, args|
+            repo = args.argv[0]
+            new_name = args.argv[1]
+            github = Octokit.client(ENV["GH_USER"], ENV["GH_PAT"])
+            if github.edit_repository(ENV["GH_USER"]+"/"+ repo, name: new_name)
+             print "Renamed " + ENV["GH_USER"]+"/"+ repo + " to " +ENV["GH_USER"]+"/"+ new_name+ "\n"
             end
           end
         end

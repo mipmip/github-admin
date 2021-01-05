@@ -14,7 +14,7 @@ shards:
 
   octokit:
     git: https://github.com/mipmip/octokit.cr.git
-    version: 0.1.0+git.commit.b87a925c9028b97d5ee7ad755f7fa5bbb107ecdb
+    version: 0.1.0+git.commit.d5c394663f180078434c97a9ac6324bbf9214ed5
 
   tallboy:
     git: https://github.com/epoch/tallboy.git
