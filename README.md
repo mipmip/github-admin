@@ -20,7 +20,22 @@ $ ghadm repo
     web      open repository in web browser
     delete   delete repository
     trans    transfer repository
+
+$ ghadm org
+    list     list repositories
 ```
+
+## Features
+
+* Repository
+  * [x] list
+  * [x] show in web browser
+  * [x] delete
+  * [x] transfer to organization
+  * [ ] rename
+* Organization
+  * [x] list
+  * [ ] list with repositories
 
 ## Development
 
