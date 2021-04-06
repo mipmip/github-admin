@@ -2,21 +2,25 @@ version: 2.0
 shards:
   clim:
     git: https://github.com/at-grandpa/clim.git
-    version: 0.15.0
+    version: 0.17.0
 
   dotenv:
     git: https://github.com/gdotdesign/cr-dotenv.git
-    version: 0.7.0
+    version: 1.0.0
 
   halite:
     git: https://github.com/icyleaf/halite.git
-    version: 0.10.7
+    version: 0.12.0
+
+  json_mapping:
+    git: https://github.com/crystal-lang/json_mapping.cr.git
+    version: 0.1.0
 
   octokit:
     git: https://github.com/mipmip/octokit.cr.git
-    version: 0.1.0+git.commit.d5c394663f180078434c97a9ac6324bbf9214ed5
+    version: 0.1.0+git.commit.43df6dce1ce17d7a9e048feb4b457dae224b4e53
 
   tallboy:
-    git: https://github.com/epoch/tallboy.git
-    version: 0.9.3
+    git: https://github.com/mipmip/tallboy.git
+    version: 0.9.3+git.commit.945f50b7923544fc3cc35420fc7f465cd91a15e8
 
